@@ -1,24 +1,35 @@
 <template>
-<view class='main'>
-	<Bookrack></Bookrack>
-</view>
+    <view class="main">
+        <Calendar
+            :date="date"
+            @switchDate="onSwitchDate"
+        />
+    </view>
 </template>
 
 <script>
     import Bookrack from '@/components/Bookrack'
+    import Calendar from '@/components/Calendar'
 
     export default {
         components: {
-            Bookrack
+            Bookrack,
+            Calendar
         },
         data () {
-            return {}
+            return {
+                date: new Date()
+            }
         },
         computed: {},
         watch: {},
         onLoad () { },
         onShow () { },
-        methods: {}
+        methods: {
+            onSwitchDate (date) {
+                this.date = date
+            }
+        }
     }
 </script>
 
@@ -32,7 +43,8 @@
     .main {
         display: flex;
         justify-content: center;
-		
+
         width: 750rpx;
+        padding-top: 30rpx;
     }
 </style>
